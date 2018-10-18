@@ -6,7 +6,6 @@ public class practice {
   }
   public static void main(String[] args){
     Scanner scan = new Scanner(System.in);
-    /*
     double a = scan.nextDouble();
     String operator = scan.next();
     double b = scan.nextDouble();
@@ -53,7 +52,6 @@ public class practice {
       } while (input != 0);
       print("Current"+count);
     scan.close();
-    */
 
     int a = scan.nextInt();
     int b = scan.nextInt();
