@@ -16,34 +16,34 @@ public class Classwork {
             print (31+day);
         }
         else if (month == 2) {
-            print (28+day);
+            print (59+day);
         }
         else if (month == 3) {
-            print (31+day);
+            print (90+day);
         }
         else if (month == 4) {
-            print (30+day);
+            print (120+day);
         }
         else if (month == 5) {
-            print (31+day);
+            print (151+day);
         }
         else if (month == 6) {
-            print (31+day);
+            print (182+day);
         }
         else if (month == 7) {
-            print (30+day);
+            print (212+day);
         }
         else if (month == 8) {
-            print (31+day);
+            print (243+day);
         }
         else if (month == 9) {
-            print (30+day);
+            print (273+day);
         }
         else if (month == 10) {
-            print (31+day);
+            print (304+day);
         }
         else if (month == 11) {
-            print (30+day);
+            print (334+day);
         }
         else {
             print(355);
@@ -51,3 +51,4 @@ public class Classwork {
 
     }
 }
+//better solution, with a switch statment
