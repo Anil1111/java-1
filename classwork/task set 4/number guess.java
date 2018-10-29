@@ -6,10 +6,6 @@ public class Classwork {
     }
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
-        //remove later
-        Random rand = new Random();
-        int random = rand.nextInt(1000000);
-        print(random);
         String user = "n";
         int guesses = 0;
         double number = 500000;
