@@ -18,7 +18,7 @@ public class Classwork {
             if( (n & (mask << i)) != 0)
                 bitsize = i;
         }
-
+        
         for( int i=0; i<(bitsize+1); i++){
             if (i > 0) {
                 print(", ");
