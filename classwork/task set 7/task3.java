@@ -23,7 +23,7 @@ public class Classwork {
             }
         }
         int [] finalarr = {evennumbers,oddnumbers};
-        print(Arrays.toString(finalarr));
+        //print(Arrays.toString(finalarr));
         return finalarr;
     }
 }
