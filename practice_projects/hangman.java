@@ -3,25 +3,40 @@
     game prep
     check whether the letter is in the word
     end 
-
+Note: create an array for guessed letters and notify the user if they repeat.
     */
 
 import java.io.*;
 import java.util.*;
 
 public class Classwork {
+    /**
+     * print simplification
+     * @param obj
+     */
     static void print(Object obj) {
-    System.out.println(obj);
+        System.out.println(obj);
     }
+    /**
+     * runs the game
+     * @param args
+     */
     public static void main(String[] args){
         play(start());
     }
+    /**
+     * Reads in users guess and returns it as a char
+     * @return
+     */
     public static char charread() {
         Scanner scan = new Scanner(System.in);
         char userguess = scan.next().charAt(0);
         return userguess;
     }
-    /* Welcome message, chooses a word */
+    /**
+     * Welcome message, chooses a word
+     * @return
+     */
     public static String start() {
         print("Welcome to hangman!");
         Random rnd = new Random();
@@ -46,32 +61,52 @@ public class Classwork {
         int guesses = 13;
         char userinput;
         char [] wordarr = word.toCharArray();
+
+        ArrayList<Character> arrlist = new ArrayList<>();
+        for (Character ch : wordarr) {
+            arrlist.add('_');
+        }
+        int times = 0;
+        print(Arrays.toString(arrlist.toArray())); //replace with a loop that prints 
         for (int x = 0; x < guesses;x++) {
             userinput = charread();
-            guess(userinput, wordarr);
+            ArrayList<Integer> lettersat = guess(userinput, wordarr);
+            times = lettersat.size();
+            print("letter "+ userinput+" is in the word "+times+" times"); // add to say how many times based on array length
             print("Guesses left "+(12-x));
+            print(arrlist);
         }
     }
+    /**
+     * tells the user the length and displays blanks
+     * @param word
+     * @return
+     */
     public static String [] setup(String word) {
-        //print(word);
         String [] arr = word.split("");
         print("The word consists of "+word.length()+ " letters.");
-        for (String i : arr) {
-            System.out.print("_ ");
-            //print(i);
-            //print(Arrays.toString(arr));
-        }
-        System.out.print("\n");
+        //for (String i : arr) {
+        //    System.out.print("_ ");
+        //}
+        //System.out.print("\n");
         return arr;
     }
-    public static boolean guess(char n, char [] arr) {
+    public static ArrayList guess(char n, char [] arr) {
         boolean letterIsInWord = false;
-        for (char l : arr) {
-            if (l == n){
+        ArrayList<Integer> lettersat = new ArrayList<>();
+        for (int l = 0; l < arr.length; l++) {
+            if (arr[l] == n){
                 letterIsInWord = true;
-                print("the word has letter "+ n);
+                lettersat.add(l);
+
+                //print("letter "+ n+" is in the word");
             }
+            //else {
+                //print("letter "+n+" is not in the word");
+            //}
         }
-        return letterIsInWord;
+        return lettersat; //return an array of indexes of the letter 
+
+        //return letterIsInWord;
     }
 }
