@@ -11,7 +11,7 @@ public class Classwork {
                                 {4,5,6,7,8,9} }; 
         inner(testarray);
     }
-    public static void inner(int [] [] arr) {
+    public static int [] [] inner(int [] [] arr) {
         int [] [] arr2 = new int [(arr.length-2)] [(arr[0].length-2)];
         for (int k = 0; k < arr.length-2;k++) {
             for (int x =0; x < arr[0].length-2; x++) {
