@@ -6,6 +6,8 @@
 Note: create an array for guessed letters and notify the user if they repeat.
     */
 
+    //bug with increasing guessed when taking a wrong guess, neeed to increment guessed++ at one other point
+
 import java.io.*;
 import java.util.*;
 
@@ -52,13 +54,12 @@ public class Classwork {
             System.out.println("File is not found!");
         }
         String word = liststrings.get(rnd.nextInt(liststrings.size()));
-        print(word);
+        //print(word);
         return word;
     }
     public static void play(String word) {
         setup(word);
-        print("You have 13 guesses");
-        int guesses = 13;
+        print("You have 12 guesses");
         char userinput;
         char [] wordarr = word.toCharArray();
 
@@ -67,14 +68,48 @@ public class Classwork {
             arrlist.add('_');
         }
         int times = 0;
-        print(Arrays.toString(arrlist.toArray())); //replace with a loop that prints 
-        for (int x = 0; x < guesses;x++) {
+        int guessed =0;
+        boolean wordcompleted = false;
+        ArrayList<Character> gussedletters = new ArrayList<>();
+        //print(Arrays.toString(arrlist.toArray())); //replace with a loop that prints without structuring NOTE: prints blanks for word length
+        for (Character w : arrlist) {
+            System.out.print(w+" ");
+        }
+        System.out.print("\n");
+        do {
             userinput = charread();
-            ArrayList<Integer> lettersat = guess(userinput, wordarr);
-            times = lettersat.size();
-            print("letter "+ userinput+" is in the word "+times+" times"); // add to say how many times based on array length
-            print("Guesses left "+(12-x));
-            print(arrlist);
+            if (gussedletters.contains(userinput)){
+                print("You already guessed "+userinput);
+                guessed++;
+            }
+            else {
+                ArrayList<Integer> lettersat = guess(userinput, wordarr);
+                times = lettersat.size();
+                if (times == 0){
+                    guessed++;
+                }
+                print("Letter "+ userinput+" is in the word "+times+" times");
+                //modify the guessed arraylist
+                for (int z =0; z< times; z++){
+                    arrlist.set((lettersat.get(z)), userinput);
+                }
+                gussedletters.add(userinput);
+                //print(arrlist); //prints current guess state
+                for (Character w : arrlist) {
+                    System.out.print(w+" ");
+                }
+            }
+            print("Guesses left "+(12-guessed));
+            if (!(arrlist.contains('_'))){
+                wordcompleted = true;  
+            }
+        } while ( !wordcompleted & ((12-guessed)> 0)); //fix this condition
+        if (wordcompleted){
+            print("Word completed, you win!");
+        }
+        else {
+            print("You lose!");
+            print("The word was: "+word);
         }
     }
     /**
@@ -85,10 +120,6 @@ public class Classwork {
     public static String [] setup(String word) {
         String [] arr = word.split("");
         print("The word consists of "+word.length()+ " letters.");
-        //for (String i : arr) {
-        //    System.out.print("_ ");
-        //}
-        //System.out.print("\n");
         return arr;
     }
     public static ArrayList guess(char n, char [] arr) {
