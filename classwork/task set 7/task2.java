@@ -8,6 +8,7 @@ public class Classwork {
     }
     public static void newarr(){
         int[][] arr = { {1,3}, {3,4,5,8}, {6,8}, {1,9,6} };
+        //int [] [] arr = {{},{}};
         int [] arr2 = new int [(arr.length)];
         int max;
         for (int k =0; k < arr.length; k++) {
@@ -18,7 +19,7 @@ public class Classwork {
             //print(max);
             arr2[k] = max;    
         }
-        //print(Arrays.toString(arr2));
+    //print(Arrays.toString(arr2));
     }
 }
   

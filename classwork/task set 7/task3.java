@@ -1,5 +1,5 @@
 import java.util.*;
-
+//shorter
 public class Classwork {
     static void print(Object obj) {
     System.out.println(obj);
