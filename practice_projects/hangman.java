@@ -1,13 +1,3 @@
-    //outline 
-    /* 3 methods
-    game prep
-    check whether the letter is in the word
-    end 
-Note: create an array for guessed letters and notify the user if they repeat.
-    */
-
-    //bug with increasing guessed when taking a wrong guess, neeed to increment guessed++ at one other point
-
 import java.io.*;
 import java.util.*;
 
@@ -57,6 +47,10 @@ public class Classwork {
         //print(word);
         return word;
     }
+    /**
+     * Runs the game
+     * @param word
+     */
     public static void play(String word) {
         setup(word);
         print("You have 12 guesses");
@@ -103,7 +97,7 @@ public class Classwork {
             if (!(arrlist.contains('_'))){
                 wordcompleted = true;  
             }
-        } while ( !wordcompleted & ((12-guessed)> 0)); //fix this condition
+        } while ( !wordcompleted & ((12-guessed)> 0));
         if (wordcompleted){
             print("Word completed, you win!");
         }
@@ -113,7 +107,7 @@ public class Classwork {
         }
     }
     /**
-     * tells the user the length and displays blanks
+     * tells the user the length
      * @param word
      * @return
      */
@@ -122,6 +116,14 @@ public class Classwork {
         print("The word consists of "+word.length()+ " letters.");
         return arr;
     }
+    /**
+     * intakes users guess as n 
+     * intakes the word as an array
+     * returns indices of where char n exists in the word as an array
+     * @param n
+     * @param arr
+     * @return
+     */
     public static ArrayList guess(char n, char [] arr) {
         boolean letterIsInWord = false;
         ArrayList<Integer> lettersat = new ArrayList<>();
@@ -129,15 +131,8 @@ public class Classwork {
             if (arr[l] == n){
                 letterIsInWord = true;
                 lettersat.add(l);
-
-                //print("letter "+ n+" is in the word");
             }
-            //else {
-                //print("letter "+n+" is not in the word");
-            //}
         }
         return lettersat; //return an array of indexes of the letter 
-
-        //return letterIsInWord;
     }
 }
