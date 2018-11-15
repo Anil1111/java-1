@@ -26,17 +26,17 @@ public class Classwork {
             }
         }
         
-        //int [] temp = {0,0,0,5,6,7,8,2};
+        //int [] temp = {0,0,0,0,5,6,7,8,2};
         Arrays.sort(temp);
-        for(int i = 2; i < temp.length; i++) {
-            if(temp[i] == temp[i - 1] && temp[i -2] == temp[i-1]) {
-                System.out.println("Duplicate: " + temp[i]);
+        for(int i =2 ; i < temp.length-1; i++) {
+            if(temp[i] == temp[i - 1] && temp[i -2] == temp[i-1] && temp[i] != temp[i+1]) {
+                System.out.println("Duplicate in arr1: " + temp[i]);
             }
         }
         Arrays.sort(temp2);
-        for(int y = 2; y < temp2.length; y++) {
-            if(temp2[y] == temp2[y - 1] && temp2[y -2] == temp2[y-1]) {
-                System.out.println("Duplicate: " + temp2[y]);
+        for(int y = 2; y < temp2.length-1; y++) {
+            if(temp2[y] == temp2[y - 1] && temp2[y -2] == temp2[y-1] && temp2[y] != temp2[y+1]) {
+                System.out.println("Duplicate in arr2: " + temp2[y]);
             }
         }
 
