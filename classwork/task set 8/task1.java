@@ -12,7 +12,7 @@ public class Classwork {
         System.out.println(RecIter.factI(10));
         System.out.println(RecIter.gcdR(12125,40643));
         System.out.println(RecIter.gcdI(12125,40643));
-        int[] a = {3,8,2,9,7};
+        int[] a = {3,8,2,9,7}; 
         System.out.println(RecIter.maxElem(a,0,a.length));
         RecIter.reverse(a,0,a.length);
         for (int i = 0; i < a.length; ++i)
@@ -34,15 +34,17 @@ public class RecIter {
         }
     }
     public static int fiboI(int n){
-        int fibonumber =1;
-        int nbefore = 1;
+        int fibonumber =2;
+        int num2 = 2;
+        int num1 = 1;
         if (n >= 0 && n < 2) {
             return n;
         }
         else {
-            for (int z = 0; z < n-2; z++){
-                fibonumber += nbefore;
-                nbefore = fibonumber;
+            for (int z = 3; z < n; z++){
+                fibonumber = num1+num2;
+                num1 = num2;
+                num2 = fibonumber;
             }
             return fibonumber;
         }
@@ -89,18 +91,85 @@ public class RecIter {
         }
         return b;
     }
-    public static int maxElem(int[] arr, int from, int to){ //figure out
+    //int[] a = {3,8,2,9,7};
+    public static int maxElem(int[] arr, int from, int to){  //figure out
         int max = 0;
-        if (arr.length>0){
+        int temp = 0;
+        if (to > (arr.length-1)){
+            to -= 1;
         }
-        else {
+        if (from > to || from == (to-1)){
             return max;
         }
+        else {
+            to -= 1;
+            if (max < (Math.max(arr[to],arr[from]))) {
+                max = Math.max(arr[to],arr[from]);
+                //System.out.println("current max: "+max);
+            }
+            //System.out.println("current max: "+max);
+            from++;
+            //System.out.println("from "+from);
+            //System.out.println("to "+to);
+            if ((to-from) != 1){
+                //System.out.println("recursion");
+                maxElem(arr, from, to);
+            }
+            else {
+            }
+            //return max;
+        }
+        return max;
     }
-    public static void reverse(int[] arr, int from, int to){
-
+    
+    public static int [] reverse(int[] arr, int from, int to){  // {3,8,2,9,7}; ->>{7,9,2,8,3}
+        int temp = 0;
+        if (to > (arr.length-1)){
+            to -= 1;
+        }
+        if (from > to || from == (to-1)){
+            return arr;
+        }
+        else {
+            temp = arr[from];
+            arr[from] = arr[to];
+            arr[to] = temp;
+            to -= 1;
+            from++;
+            //System.out.println("swapping1: "+arr[from]);
+            //System.out.println("swapping2: "+arr[to]);
+            //System.out.println("from "+from);
+            //System.out.println("to "+to);
+            if ((to-from) != 1){
+                reverse(arr, from, to);
+            }
+            else {
+            }
+            //return max;
+        }
+        return arr;
     }
-    public static boolean isPalidrom(String s){
-
+    public static boolean isPalindrom(String s){
+        if (s.length() > 1){
+            char char0 = s.charAt(0);
+            char char1 = s.charAt((s.length())-1);
+            //System.out.print(char0+" ");
+            //System.out.println(char1);
+            if (char0 != char1){
+                //System.out.println("sets to false");
+                return false;
+            }
+            else{
+                String next = s.substring(1,s.length()-1);
+                //System.out.println(next);
+                return isPalindrom(next);
+            }
+        }
+        else {
+            //System.out.println("return in else");
+            return true;
+        }
+        //return false;
+        //System.out.print(palindrom);
     }
 }
