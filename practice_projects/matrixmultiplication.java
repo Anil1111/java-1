@@ -12,8 +12,8 @@ public class Classwork {
                         };
         int [] [] arr2 = {
                           {1,0,0},
-                          {1,0,0},
-                          {1,0,0}
+                          {0,1,0},
+                          {0,0,1}
                         };
         int [] [] arr3 = new int [arr1.length][arr1[0].length];
         int arraylength = arr1.length;
