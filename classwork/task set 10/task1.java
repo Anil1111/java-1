@@ -19,7 +19,7 @@ public class Classwork {
         Circle[] crs = {new Circle(2), new Circle(1),
                         new Circle(3), new Circle(2)};
         Square[] squares = Circle.getSquares(crs);
-        System.out.println( "\nPerimeters of squares " +
+        System.out.println( "\nAreas of squares " +
                             "from circles: ");
         for (Square s : squares)
             System.out.printf("%.2f ", s.getArea());
@@ -28,17 +28,15 @@ public class Classwork {
 }
 public class Square {
     private double side;
-    private Object circle;
+    private Square square;
     public Square(double side){
         this.side = side; 
     }
     public Square(Circle p){
-        Circle z = p;
-        //System.out.println("area "+ z.getArea());
-        double input = Math.sqrt((z.getArea()/Math.PI));
-        //System.out.println("input "+input);
-        System.out.println("new circle radius: "+input);
-        Circle circle = new Circle(input);
+        square = new Square(Math.sqrt(p.getArea()));
+    }
+    public Square getSquare(){
+        return square;
     }
     public double getSide(){
         return side;
@@ -56,11 +54,11 @@ public class Square {
     public String toString() {
         return "A square with sides of: " + side;
     }
-    public Object getInscribedCircle(){
+    public Circle getInscribedCircle(){
         Circle c = new Circle(side/2);
         return c;
     }
-    public Object getCircumscribedCircle(){
+    public Circle getCircumscribedCircle(){
         Circle c = new Circle(getDiagonal()/2);
         return c;
     }
@@ -71,8 +69,8 @@ public class Circle {
     public Circle(double radius){
         this.radius = radius;
     }
-    public Circle(Object o){
-        Square square = new Square(Math.sqrt(getArea()));
+    public Circle(Circle o){
+        square = new Square(Math.sqrt(o.getArea()));
     }
     public double getRadius(){
         return radius;
@@ -101,8 +99,8 @@ public class Circle {
         //[c1,c2,c3,c4]
         Square [] arrf = new Square [arr.length];
         for (int z = 0; z < arr.length; z++){
-            System.out.println("value "+arr[z]);
-            arrf[z] = new Square(arr[z]);
+            Square h = new Square(arr[z]);
+            arrf[z] = h.getSquare();
         }
         System.out.println(Arrays.deepToString(arrf));
         return arrf;
