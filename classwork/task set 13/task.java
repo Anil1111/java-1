@@ -20,14 +20,13 @@ public class task {
         String [] arr = name.split(" ");
         String out; 
         String temp;
+        out = arr[0].substring(0, 1).toUpperCase() +". ";
         if (arr.length ==3){
-            out = arr[0].substring(0, 1).toUpperCase() +". ";
             out = out.substring(0, 3) + arr[1].substring(0, 1).toUpperCase()+". ";
-            out = out.substring(0, 6) + arr[2].substring(0, 1).toUpperCase()+arr[2].substring(1); //J. K. Peterson
+            out = out.substring(0, 6) + norm(arr[2]); //J. K. Peterson
         }
         else {
-            out = arr[0].substring(0, 1).toUpperCase() +". ";
-            out = out.substring(0, 3) + arr[1].substring(0, 1).toUpperCase()+arr[1].substring(1);
+            out = out.substring(0, 3) + norm(arr[1]);
         }
         return out;
     }
@@ -37,7 +36,7 @@ public class task {
             if (from.contains(arr[z])){
                 int charindex = from.indexOf(arr[z]);
                 char change = to.charAt(charindex);
-                arr[z] = String.valueOf(change);
+                arr[z] = String.valueOf(change); // String z = ""+change;
             }
         }
         String out = "";
