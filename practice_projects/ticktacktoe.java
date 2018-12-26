@@ -8,7 +8,7 @@ public class ticktacktoe {
         // olderst bits 10-18 are for "x" and "o", 0 is "o", 1 is "x"
         Scanner scan = new Scanner(System.in);
         int game = 0b0_0000_0000_0_1111_1111;
-        game = 0;
+        //game = 0;
         boolean gamelive = true;
         while (gamelive){
             if ((game & 0b11_1111_1111_1111_1111) == 0){
@@ -57,7 +57,10 @@ public class ticktacktoe {
                 game += (1 <<(possition+8));
             }
             game += (1 <<possition-1);
-
+                        if ((game & 0b1_1111_1111) == 0b1_1111_1111){
+                System.out.println("Game over ");
+                gamelive = false;
+            }
             //check if someone won
             //calculate result ex. tie, x wins, o wins
             /*
@@ -90,10 +93,7 @@ public class ticktacktoe {
             if ((game & 0b0_0101_0100)==0b0_0101_0100){ // 7,5,3 not empty
                 System.out.print("o wins");
             }
-            if ((game & 0b1_1111_1111) == 0b1_1111_1111){
-                System.out.println("Game over "+ result);
-                gamelive = false;
-            }
+
         }
         scan.close();
     }
